@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Die Breitenanpassung an die aktuelle Bildschirmbreite passiert bei besonders kritischen Breiten von Elementen, z.B. Texte, Bilder, Tabellen, usw. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgabe 6</title>
+    <style>
+        .flex{
+            display:flex;
+            justify-content:center;
+            align-items: center;
+        }
+        .flex-item-1{
+            flex:1; /** 1/4 **/
+            background-color:lightgray;
+        }
+        .flex-item-2{
+            flex:2; /** 2/4 **/
+            background-color: red;
+        }
+        .flex-item-3{
+            flex:1;
+            background-color: seagreen;
+        }
+        .flex div{ /** Leerzeichen = Alle DIV Elemente die als Eltern Element die Klasse .flex haben **/
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+        }
+        span{
+            display:none;
+        }
+        /** Media Query mit Umbruchpunkten(Breakpoints) für neue CSS Regeln **/
+        /** Beispiele von Standart Breiten: https://www.mediaevent.de/css/breakpoints.html **/
+        @media (min-width:581px){} /** Wenn Bildschirm GRÖßER als 581px ist, werden neue CSS Regeln angewendet.**/
+        @media (max-width:581px) and (min-width:900px){ }/** ZWISCHEN 581Pixel und 900 Pixel werden diese Regeln angewendet. **/
+        @media (max-width: 580px){ /** In dieser neuen Regel können wir neue CSS Regeln schreiben, was passieren soll, wenn der Bildschirm KLEINER als 580px ist.**/
+            body{
+                background-color:lightgreen;
+            }
+            .flex{
+                flex-direction:column-reverse;
+                font-size:28px;
+            }
+            .flex-item-1, .flex-item-2{
+                width:100%;
+                padding:15px;
+            }
+            img{
+                width: 100%;
+            }
+            ul{
+                display: none;
+            }
+            span{
+                display: block;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Produkt</li>
+        <li>Kontakt</li>
+    </ul>
+    <span>Home - About - Produkt - Kontakt</span>
+    <div class="flex"> <!-- Eltern Element der ersten Flexbox-->
+        <div class="flex-item-1">Ein Element</div> <!-- Kind Element der ersten Flexbox links-->
+        <div class="flex-item-2">Ein Element</div> <!-- Kind Element der ersten Flexbox mitte-->
+        <div class="flex-item-1">Ein Element</div> <!-- Kind Element der ersten Flexbox rechts-->
+    </div>
+    <div class="flex"> <!-- Eltern Element der zweiten Flexbox-->
+        <div class="flex-item-1">Ein Element</div> <!-- Kind Element der ersten Flexbox links-->
+        <div class="flex-item-1">Ein Element</div> <!-- Kind Element der ersten Flexbox rechts-->
+    </div>
+    <div class="flex"> <!-- Eltern Element der dritten Flexbox-->
+        <div class="flex-item-1"> <!-- Kind Element der dritten Flexbox links-->
+            <div class="flex"> <!-- Unter Flexbox der Linken Seite-->
+                <div class="flex-item-3"> <!-- Unter Linke Seite -->
+                    <img src="haribo.png">
+                </div>
+                <div class="flex-item-3"> <!-- Unter Rechte Seite -->
+                    Information
+                    <!-- Andere Tag Element sind ebenfalls korrekt-->
+                </div>
+            </div>
+        </div> 
+        <div class="flex-item-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat at odio itaque eaque recusandae tenetur maxime optio, illum iure quis, assumenda incidunt odit vitae. Temporibus fugiat autem earum commodi deserunt.
+        Consequuntur quasi officiis reiciendis alias veritatis, similique sunt quos ab inventore autem placeat sit cumque voluptatum magnam? Perspiciatis deleniti iusto veritatis optio labore, explicabo mollitia, voluptate aliquam nisi consectetur quae?</div> <!-- Kind Element der dritten Flexbox rechts-->
+    </div>
+</body>
+</html>
